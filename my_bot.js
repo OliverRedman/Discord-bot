@@ -1,6 +1,5 @@
 const Discord = require('discord.js')
-const client = new Discord.Client()
-
+const client = new Discord.Client({ ws: { intents: Discord.Intents.GUILD_MEMBERS }})
 
 client.on('ready', () => {
   console.log('connected as' + client.user.tag)
@@ -12,8 +11,9 @@ client.on('ready', () => {
 client.on('message', (receivedMessage) => {
   if (receivedMessage.author == client.user || receivedMessage.channel.type === "dm") {
     return
-  } processCommand(receivedMessage)
-  if (receivedMessage.content.startsWith('!report')) {
+  } else if
+   (receivedMessage.content.startsWith('!report')) {
+     processCommand(receivedMessage)
   }
 });
 
