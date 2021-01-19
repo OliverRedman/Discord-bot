@@ -1,6 +1,10 @@
 const Discord = require('discord.js')
-const client = new Discord.Client({ ws: { intents: Discord.Intents.GUILD_MEMBERS }})
+const client = new Discord.Client({ ws: { intents: Discord.Intents.ALL }})
+require('dotenv').config();
 
+// Login the bot
+
+client.login(process.env.CLIENT_KEY);
 client.on('ready', () => {
   console.log('connected as' + client.user.tag)
   client.user.setActivity('You', {type: 'WATCHING'})
@@ -51,6 +55,3 @@ console.log(membersWithRole);
 
   receivedMessage.react('🙊')
 }};
-
-
-client.login('NzkyODIzMTE0NDc1NjM0NzI5.X-jUEA.BkMHioUj6VTxnHHIhdoEXbwezF8')
